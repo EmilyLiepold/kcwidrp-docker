@@ -98,6 +98,13 @@ docker buildx build --platform linux/amd64,linux/arm64 -t kcwi-drp .
 - **Browser**: Firefox (from Mozilla PPA) + geckodriver
 - **Display**: Xvfb virtual framebuffer on `:99`
 
+## Patches Applied
+
+This container includes monkeypatches for known issues in KCWI DRP:
+
+1. **Bokeh session ID**: Forces a fixed session ID (`kcwi`) so plots are accessible at a predictable URL
+2. **`get_master_name` fix**: Patches `kcwidrp.primitives.get_master_name()` to handle edge cases where `tab['filename'][loc]` fails
+
 ## Troubleshooting
 
 ### Plots not visible in browser
