@@ -40,6 +40,11 @@ RUN pip install kcwidrp
 # Pin selenium to 4.9.x which still respects PATH for geckodriver
 RUN pip install "selenium>=4.9,<4.10"
 
+# Patch get_master_name() in kcwidrp to handle table indexing edge case
+# (tab['filename'][loc] can fail; fall back to tab[loc])
+COPY patch_get_master_name.py /app/patch_get_master_name.py
+RUN python /app/patch_get_master_name.py
+
 # Symlink system Firefox and geckodriver into conda env so Bokeh's export_png can find them
 RUN ln -sf /usr/bin/firefox /opt/conda/envs/kcwidrp/bin/firefox && \
     ln -sf /usr/local/bin/geckodriver /opt/conda/envs/kcwidrp/bin/geckodriver
