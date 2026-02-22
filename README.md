@@ -7,7 +7,7 @@ A cross-platform Docker container for the [Keck Cosmic Web Imager Data Reduction
 ### Pull the image
 
 ```bash
-docker pull ghcr.io/emilyliepold/dockerized_kcwi-drp:main
+docker pull ghcr.io/emilyliepold/kcwidrp-docker:main
 ```
 
 ### Run a reduction
@@ -15,7 +15,7 @@ docker pull ghcr.io/emilyliepold/dockerized_kcwi-drp:main
 ```bash
 docker run --rm -it -p 5006:5006 \
   -v /path/to/your/data:/data \
-  ghcr.io/emilyliepold/dockerized_kcwi-drp:main \
+  ghcr.io/emilyliepold/kcwidrp-docker:main \
   reduce_kcwi -c kcwi.cfg -b -f kb*.fits -g
 ```
 
@@ -30,7 +30,7 @@ Open **http://localhost:5006/?bokeh-session-id=kcwi** in your browser to see int
 ```bash
 docker run --rm -it -p 5006:5006 \
   -v /path/to/your/data:/data \
-  ghcr.io/emilyliepold/dockerized_kcwi-drp:main \
+  ghcr.io/emilyliepold/kcwidrp-docker:main \
   /bin/bash
 ```
 
@@ -39,7 +39,7 @@ docker run --rm -it -p 5006:5006 \
 ```bash
 docker run --rm -it -p 5006:5006 \
   -v /path/to/your/data:/data \
-  ghcr.io/emilyliepold/dockerized_kcwi-drp:main \
+  ghcr.io/emilyliepold/kcwidrp-docker:main \
   reduce_kcwi -c kcwi.cfg -b -f kb*.fits -g
 ```
 
@@ -51,7 +51,7 @@ Mount `~/.kcwidrp` to cache calibration files between runs:
 docker run --rm -it -p 5006:5006 \
   -v /path/to/your/data:/data \
   -v ~/.kcwidrp:/root/.kcwidrp \
-  ghcr.io/emilyliepold/dockerized_kcwi-drp:main \
+  ghcr.io/emilyliepold/kcwidrp-docker:main \
   reduce_kcwi -b -f kb*.fits -g
 ```
 
@@ -60,7 +60,7 @@ docker run --rm -it -p 5006:5006 \
 Add this to your `~/.zshrc` or `~/.bashrc`:
 
 ```bash
-alias kcwi='docker run --rm -it -p 5006:5006 -v "$(pwd)":/data ghcr.io/emilyliepold/dockerized_kcwi-drp:main'
+alias kcwi='docker run --rm -it -p 5006:5006 -v "$(pwd)":/data ghcr.io/emilyliepold/kcwidrp-docker:main'
 ```
 
 Then simply run:
@@ -73,9 +73,9 @@ kcwi reduce_kcwi -c kcwi.cfg -b -f kb*.fits -g
 ## Building Locally
 
 ```bash
-git clone https://github.com/EmilyLiepold/dockerized_KCWI-DRP.git
-cd dockerized_KCWI-DRP/kcwi-docker
-docker build -t kcwi-drp .
+git clone https://github.com/EmilyLiepold/kcwidrp-docker.git
+cd kcwidrp-docker
+docker build -t kcwidrp-docker .
 ```
 
 For multi-architecture builds (ARM64 + AMD64):
