@@ -36,7 +36,7 @@ RUN conda create -n kcwidrp python=3.12 -y
 
 # 5. Install KCWI Pipeline (following official install instructions)
 SHELL ["conda", "run", "-n", "kcwidrp", "/bin/bash", "-c"]
-RUN pip install kcwidrp=1.3.2
+RUN pip install kcwidrp==1.3.1
 # Pin selenium to 4.9.x which still respects PATH for geckodriver
 RUN pip install "selenium>=4.9,<4.10"
 
