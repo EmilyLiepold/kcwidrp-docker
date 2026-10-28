@@ -2,7 +2,7 @@
 
 A cross-platform Docker container for the [Keck Cosmic Web Imager Data Reduction Pipeline (KCWI DRP)](https://kcwi-drp.readthedocs.io/). Run the pipeline on macOS (Apple Silicon) or Linux without managing local dependencies.
 
-The most recent release packages kcwidrp version 1.2.0.
+The most recent release packages kcwidrp version 1.3.1.
 
 ## Quick Start
 
